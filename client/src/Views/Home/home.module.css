@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+/**************HeroImage*********/
+.heroImage{
+    background-image: url('../../Images/heroImage.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.heroImageOpacity{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.heroImageTitle{
+    color:white
+}
+
+/****************Utilities****************/
+.btn{
+    border-radius: 5rem;
+    padding: 1rem;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: crimson;
+    font-size: 0.9rem
+    ;
+}
+.btn:hover{
+    color: white;
+}
+
+.mision{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
