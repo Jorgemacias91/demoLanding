@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import style from './register.module.css'
+import style from './userEdit.module.css'
 import Navbar from '../../Components/Navbar/navbar'
 import Footer from '../../Components/Footer/footer'
 import signInUsers from '../../Actions/signInUsers'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
+import deleteUser from '../../Actions/deleteUser'
+import imgDelete from '../../Images/eliminar.svg'
+import signOutUser from '../../Actions/signOutUser'
 
 export const validate = (input) => {
     let errors = {};
@@ -13,23 +16,6 @@ export const validate = (input) => {
         errors.username = "el nombre de usuario es obligatorio";
     } else {
         errors.username = "";
-    }
-
-    if (!input.password) {
-        errors.password = "la contraseña es obligatoria";
-    } else if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(input.password)) {
-        errors.password =
-            `debe contener minimo 8 caracteres, una mayuscula y un numero`;
-    } else {
-        errors.password = "";
-    }
-
-    if (!input.password2) {
-        errors.password2 = "repetir la contraseña es obligatorio";
-    } else if (input.password2 !== input.password) {
-        errors.password = "las contraseñas no coinciden";
-    } else {
-        errors.password2 = "";
     }
     if (!input.name) {
         errors.name = "el nombre es obligatorio";
@@ -57,7 +43,9 @@ export const validate = (input) => {
     return errors;
 };
 
-export default function Register() {
+export default function UserEdit() {
+
+    const userData= useSelector(state => state.userData)
 
 
     const [errormsg, setErrormsg] = useState({
@@ -67,12 +55,11 @@ export default function Register() {
 
 
     const [input, setInput] = useState({
-        username: "",
-        name: "",
-        lastname: "",
-        password: "",
-        email: "",
-        birth: ""
+        username: "" || userData.username,
+        name: "" || userData.name,
+        lastname: "" || userData.lastname,
+        email: "" || userData.email,
+        birth: "" || userData.birth
     })
 
     const [errors, setErrors] = useState({});
@@ -80,6 +67,14 @@ export default function Register() {
     const [redirect, setRedirect] = useState(false)
 
     const dispatch = useDispatch();
+    const history = useHistory()
+
+    async function handleDelete(){
+     await   dispatch(deleteUser(userData.id))
+     dispatch(signOutUser())
+     history.push('/register')
+     localStorage.removeItem('token')
+    }
 
     function onFocus(ev) {
         setTouched({
@@ -110,26 +105,15 @@ export default function Register() {
         e.preventDefault()
         
         if (
-            !errors.password2 &&
             !errors.email &&
-            !errors.password &&
             !errors.name &&
             !errors.birth &&
             !errors.lastname
         ) {
             axios
-                .post(`http://localhost:3001/user`, input)
+                .put(`http://localhost:3001/user/${userData.id}`, input)
                 .then(async (res) => {
-
-                    if (res.data.auth === true) {
-                        await dispatch(signInUsers(res.data.user));
-                        alert("Cuenta registrada");
-                        localStorage.setItem("token", res.data.token);
-
-                        setRedirect(true);
-                    } else {
                         if (res.data.msgUsername) {
-                            // console.log(res);
                             setErrormsg({ ...errormsg, errorUsername: res.data.msgUsername });
                         } else if (res.data.msgEmail) {
                             setErrormsg({
@@ -137,17 +121,16 @@ export default function Register() {
                                 errorEmail: res.data.msgEmail,
                             });
                         }
-                    }
+                        else{
+                            alert('Cuenta modificada')
+                            setRedirect(true);
+                        }
+                    
                 })
-                .catch((error) => {
-                    alert("No se pudo crear la cuenta");
-                    console.log(error);
-                });
-        } else {
-            alert("No se registró la cuenta");
+        
         }
     }
-    if(redirect) return <Redirect to = "/"></Redirect>
+    if(redirect) return <Redirect to = "/about"></Redirect>
 
     return (
         <div>
@@ -177,29 +160,6 @@ export default function Register() {
                         </div>
                     }
 
-                    <input
-                        name="password"
-                        value={input.password}
-                        type="password"
-                        placeholder="password"
-                        onChange={handleChange}
-                        onFocus={onFocus}
-                    />
-                    {errors.password && touched.password && (
-                        <p className={style.errorText}>{errors.password}</p>
-                    )}
-
-                    <input
-                        name="password2"
-                        value={input.password2}
-                        type="password"
-                        placeholder="repeat password"
-                        onChange={handleChange}
-                        onFocus={onFocus}
-                    />
-                    {errors.password2 && touched.password2 && (
-                        <p className={style.errorText}>{errors.password2}</p>
-                    )}
 
                     <input
                         name="name"
@@ -248,6 +208,7 @@ export default function Register() {
                     <input
                         name="birth"
                         value={input.birth}
+                        valueDefault={userData.birth}
                         type="date"
                         placeholder="birth"
                         onChange={handleChange}
@@ -266,12 +227,16 @@ export default function Register() {
 
                     <input
                         type="submit"
-                        value="Register"
+                        value="Edit"
                         className={style.btn}
                     />
 
                 </form>
+                
             </div>
+            <div onClick={handleDelete}>
+                    <img src={imgDelete} alt="img-delete" className={style.imgDelete}/>
+                </div>
             
         </div>
     )

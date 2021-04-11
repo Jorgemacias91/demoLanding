@@ -3,6 +3,9 @@
     height: 30%;
     padding: 2%;
 }
-.container{
-    
+.cor{
+    background-color: rgb(228, 35, 99);
+}
+.textCor{
+    color:rgb(228, 35, 99);
 }

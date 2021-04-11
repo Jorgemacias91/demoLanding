@@ -71,24 +71,6 @@ server.post('/', async (req, res) => {
 
     })
 
-    server.get('/', (req, res) => {
-        
-    
-        try {
-    
-            User.findAll()
-                .then(result => {
-                    res.json(result)
-                })
-    
-        } catch (error) {
-            res.status(400).json({ message: `Error ${error}` })
-    
-        }
-    
-    })
-
-
 server.get('/:idUser', (req, res) => {
     const { idUser } = req.params;
 
@@ -113,6 +95,8 @@ server.put('/:idUser', (req, res) => {
     const { username, name, lastname, email, birth } = req.body
 
     try {
+       
+
         User.update({
             username,
             name,

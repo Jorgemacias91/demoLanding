@@ -4,10 +4,7 @@ import Navbar from '../../Components/Navbar/navbar'
 import Footer from '../../Components/Footer/footer'
 import { Link } from 'react-router-dom'
 import People from '../../Views/People/people'
-import Feature from '../../Views/Features/features'
-import Pricing from '../../Views/Pricing/pricing'
-import About from '../../Views/About/about'
-import Contact from '../../Views/Contact/contact'
+
 
 
 export default function Home() {
@@ -43,10 +40,7 @@ export default function Home() {
         <p>No obligations or contracts. Achoo influneter Platform is avaliable to all advertisers</p>
         <button className={style.btnMessage}>START YOUR FREE TRIAL </button>
       </div>
-      <Feature/>
-      <Pricing/>
-      <About/>
-      <Contact/>
+      
       <Footer/>
             
         </div>

@@ -14,3 +14,14 @@ a{
 .containerNav{
     background: dimgray;
 }
+
+.cor{
+    color: rgb(228, 35, 99);
+    margin:1rem;
+    border-bottom:rgb(255, 255, 255) 2px solid;
+}
+
+.cor:hover{
+    color: rgb(228, 35, 99);
+    border-bottom:rgb(228, 35, 99) 2px solid;    
+}
