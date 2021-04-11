@@ -271,7 +271,7 @@ export default function Register() {
 
                 </form>
             </div>
-            <Footer />
+            
         </div>
     )
 }

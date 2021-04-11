@@ -1,0 +1,82 @@
+.container{
+   
+
+}
+
+.containerPeople{
+    background-color: rgb(207, 210, 211);
+}
+
+
+
+.title{
+    width: 250px;
+    margin:2rem auto;
+    padding: .5rem 1rem;
+    text-align: center;
+
+}
+
+.cardPeople{
+    margin:1rem auto;
+    padding: 1rem;
+    text-align: center;
+
+
+}
+
+.cardPeople img{
+        width:350px;
+        height: 300px;
+        margin-bottom: 1.25rem;
+}
+
+.cardPeople h3{
+    color:rgb(31, 29, 29);
+    text-align: left;
+    width:350px;
+}
+
+.cardPeople p{
+    color:rgb(31, 29, 29);
+    text-align: left;
+    width:350px;
+}
+
+.infoPeople p{
+    width: 60%;
+    margin:2rem auto;
+    padding: .5rem 1rem;
+    text-align: center;
+}
+
+@media screen and (min-width:768px){
+   .containerPeople > .container{
+       display: grid;
+       grid-template-columns: repeat(2,45%);
+       justify-content: space-between;
+       align-content: center;
+   } 
+
+   .containerPeople .infoPeople{
+       grid-column: span 2;
+   }
+}
+
+.cardPeople p,h3{
+    margin-left: 1.5rem;
+}
+
+@media screen and (min-width:1024px){
+    .containerPeople > .container{
+        grid-template-columns: repeat(3,30%);
+    } 
+ 
+    .containerPeople .infoPeople{
+        grid-column: span 3;
+    }
+ }
+
+
+
+

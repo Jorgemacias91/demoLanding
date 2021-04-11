@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
-import './App.css';
+import style from './App.module.css';
+
 import {Route} from 'react-router-dom'
 import Home from './Views/Home/home'
 import Register from './Views/Register/register'
@@ -12,6 +13,7 @@ import MyProfile from './Views/myProfile/myProfile'
 import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import signInUsers from './Actions/signInUsers'
+
 
 function App() {
   const dispatch = useDispatch()
@@ -37,7 +39,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className={style.App}>
+
       <Route exact path="/" component={Home}/>
       <Route path="/register" component={Register}/>
       <Route path="/feature" component={Feature}/>
@@ -46,6 +49,9 @@ function App() {
       <Route path="/login" component={Login}/>
       <Route path="/pricing" component={Pricing}/>
       <Route path="/myprofile" component={MyProfile}/>
+
+      
+     
       
     </div>
   );
