@@ -27,10 +27,10 @@ module.exports = (sequelize) => {
         },
       },
     },
-    profilePic : {
-      type: DataTypes.STRING,
-      allowNull:false
-    },
+    // profilePic : {
+    //   type: DataTypes.STRING,
+    //   allowNull:false
+    // },
     email: {
       type : DataTypes.STRING,
       allowNull:false

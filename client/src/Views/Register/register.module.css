@@ -1,0 +1,24 @@
+.formul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.errorText{
+    color:red;
+}
+
+input{
+    margin-bottom: 5%;
+}

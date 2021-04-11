@@ -1,0 +1,12 @@
+a{
+    text-decoration: none;
+}
+
+.menu{
+    color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
