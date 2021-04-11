@@ -1,7 +1,15 @@
 
 
 const initialState = {
-    user: [],
+    userData: {
+        id: 0,
+        username: "",
+        name: "",
+        lastname: "",
+        password: "",
+        email: "",
+        birth: ""
+    },
 
 
 }
@@ -10,27 +18,55 @@ function rootReducer(state = initialState, action) {
 
     switch (action.type) {
 
-        case "CREATE_USER":
+        case "SIGN_IN":
+            if (action.payload.auth === true) {
+                return {
+                    ...state,
+                    userData: action.payload.user
+                }
+
+            } else {
+                return {
+                    ...state
+                }
+            }
+
+        case "SIGN_IN_REFRESH":
             return {
                 ...state,
-                user: action.payload
+                userData: action.payload
             }
 
-        case "GET_USER":
+        case "SIGN_OUT":
             return {
                 ...state,
-                user: action.payload
+                userData: {
+                id: 0,
+                username: "",
+                name: "",
+                lastname: "",
+                password: "",
+                email: "",
+                birth: ""
             }
+        }
 
-        case "DELETE_USER" :
-            return {
-                ...state
-            }
 
-        case "EDIT_USER" :
-            return {
-                ...state
-            }
+        // case "GET_USER":
+        //     return {
+        //         ...state,
+        //         userData: action.payload
+        //     }
+
+        // case "DELETE_USER":
+        //     return {
+        //         ...state
+        //     }
+
+        // case "EDIT_USER":
+        //     return {
+        //         ...state
+        //     }
 
         default:
             return state

@@ -1,23 +1,52 @@
-import logo from './logo.svg';
+import React, {useEffect} from 'react'
 import './App.css';
+import {Route} from 'react-router-dom'
+import Home from './Views/Home/home'
+import Register from './Views/Register/register'
+import Feature from './Views/Features/features'
+import Contact from './Views/Contact/contact'
+import About from './Views/About/about'
+import Login from './Views/Login/login'
+import Pricing from './Views/Pricing/pricing'
+import MyProfile from './Views/myProfile/myProfile'
+import axios from 'axios'
+import {useDispatch} from 'react-redux'
+import signInUsers from './Actions/signInUsers'
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    var token = localStorage.getItem("token"); 
+    async function request() {
+      if (!localStorage.getItem("token")) {
+        return;
+      } else {
+        axios
+          .post("http://localhost:3001/user/userdata/token", {
+            headers: {
+              Authorization: `${token}`,
+            },
+          })
+          .then(async (result) => {
+            await dispatch(signInUsers(result.data));
+          });
+      }
+    }
+    request();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route exact path="/" component={Home}/>
+      <Route path="/register" component={Register}/>
+      <Route path="/feature" component={Feature}/>
+      <Route path="/contact" component={Contact}/>
+      <Route path="/about" component={About}/>
+      <Route path="/login" component={Login}/>
+      <Route path="/pricing" component={Pricing}/>
+      <Route path="/myprofile" component={MyProfile}/>
+      
     </div>
   );
 }
