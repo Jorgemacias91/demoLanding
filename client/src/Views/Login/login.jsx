@@ -94,9 +94,9 @@ export default function Login() {
                             <input type="checkbox" value="remember-me" /> Remember me
       </label>
                     </div>
-                    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                    <button className="w-100" className={style.btnCor} type="submit">Sign in</button>
                     <p className="mt-5 mb-3 text-muted">2021</p>
-                    <button className="w-100 btn btn-lg btn-primary" onClick={() => history.push('/register')}>Register</button>
+                    <button className="w-100" className={style.btnCor} onClick={() => history.push('/register')}>Register</button>
                 </form>
             </main>
         </div>

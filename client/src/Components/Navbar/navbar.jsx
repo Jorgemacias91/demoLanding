@@ -28,32 +28,32 @@ if (redirect) return <Redirect to="/login"></Redirect>
     return (
         <div className={style.containerNav}>
 
-<nav className="navbar navbar-expand-lg navbar-light fixed-top bg-transparent">
+<nav className="navbar navbar-expand-lg navbar-light bg-transparent" >
   <div className="container-fluid">
     <div className="navbar-nav">
-    <Link to="/" className="nav-link text-white">Achoo</Link>
+    <Link to="/" className="nav-link" className={style.cor} >Achoo</Link>
     </div>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li><Link to="/" className="nav-link active text-white">HOME</Link></li>
-            <li><Link to="/feature" className="nav-link text-white" >FEATURES</Link></li>
-            <li><Link to="/pricing" className="nav-link text-white" >PRICING</Link></li>
-            <li><Link to="/about" className="nav-link text-white">ABOUT</Link></li>
-            <li><Link to="/contact" className="nav-link text-white">CONTACT</Link></li>
+            <li><Link to="/" className="nav-link active " className={style.cor}>HOME</Link></li>
+            <li><Link to="/feature" className="nav-link" className={style.cor} >FEATURES</Link></li>
+            <li><Link to="/pricing" className="nav-link" className={style.cor} >PRICING</Link></li>
+            
+            <li><Link to="/contact" className="nav-link" className={style.cor}>CONTACT</Link></li>
             {userData.id>0 ?
-          <li><Link to="/myprofile" className="nav-link text-white">MYPROFILE</Link></li>
+          <li><Link to="/about" className="nav-link" className={style.cor}>ABOUT</Link></li>
           :
           <li></li>
           }
      </ul>
      <ul className="navbar-nav">
           {userData.id > 0 ? 
-          <li><Link to="/login" onClick={handleClick} className="nav-link text-white">SIGNUP</Link></li>
+          <li><Link to="/login" onClick={handleClick} className="nav-link" className={style.cor}>SIGNUP</Link></li>
           :
-          <li><Link to="/login" className="nav-link text-white">LOGIN</Link></li>
+          <li><Link to="/login" className="nav-link" className={style.cor}>LOGIN</Link></li>
         }
             
             

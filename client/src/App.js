@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import style from './App.module.css';
-
 import {Route} from 'react-router-dom'
 import Home from './Views/Home/home'
 import Register from './Views/Register/register'
@@ -9,10 +8,10 @@ import Contact from './Views/Contact/contact'
 import About from './Views/About/about'
 import Login from './Views/Login/login'
 import Pricing from './Views/Pricing/pricing'
-import MyProfile from './Views/myProfile/myProfile'
 import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import signInUsers from './Actions/signInUsers'
+import EditUser from './Views/UserEdit/userEdit'
 
 
 function App() {
@@ -48,9 +47,9 @@ function App() {
       <Route path="/about" component={About}/>
       <Route path="/login" component={Login}/>
       <Route path="/pricing" component={Pricing}/>
-      <Route path="/myprofile" component={MyProfile}/>
+      <Route path="/editprofile" component={EditUser}/>
 
-      
+    
      
       
     </div>

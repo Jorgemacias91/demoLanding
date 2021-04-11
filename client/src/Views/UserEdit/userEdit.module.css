@@ -16,7 +16,7 @@
 
 
 .errorText{
-    color:rgb(228, 35, 99);
+    color:red;
 }
 
 input{
@@ -24,6 +24,12 @@ input{
 }
 
 .btn{
-    background-color: rgb(228, 35, 99); ;
+    background-color: #0275d8 ;
     color:white
+}
+
+.imgDelete{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
