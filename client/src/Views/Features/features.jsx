@@ -7,10 +7,9 @@ import Footer from '../../Components/Footer/footer'
 export default function Feature(){
 
     return (
-        <div>
-            <Navbar/>
+        <div className={style.container}>
             <div className="container py-5" id="featured-3">
-  <h2 className="pb-2 border-bottom">Columns with icons</h2>
+  <h2 className="pb-2 border-bottom">Featured</h2>
   <div className="row g-5 py-5">
 
     <div className="feature col-md-4">
@@ -48,7 +47,7 @@ export default function Feature(){
 
   </div>
 </div>
-<Footer/>
+
         </div>
     )
 }

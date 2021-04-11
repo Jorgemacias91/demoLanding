@@ -2,8 +2,13 @@ import React from 'react'
 import style from './home.module.css'
 import Navbar from '../../Components/Navbar/navbar'
 import Footer from '../../Components/Footer/footer'
-import image from '../../Images/heroImage.jpg'
 import { Link } from 'react-router-dom'
+import People from '../../Views/People/people'
+import Feature from '../../Views/Features/features'
+import Pricing from '../../Views/Pricing/pricing'
+import About from '../../Views/About/about'
+import Contact from '../../Views/Contact/contact'
+
 
 export default function Home() {
 
@@ -33,8 +38,17 @@ export default function Home() {
                 </div>
                 </div>
             </div>
+            <People/>
+      <div className={style.message}>
+        <p>No obligations or contracts. Achoo influneter Platform is avaliable to all advertisers</p>
+        <button className={style.btnMessage}>START YOUR FREE TRIAL </button>
+      </div>
+      <Feature/>
+      <Pricing/>
+      <About/>
+      <Contact/>
+      <Footer/>
             
-            {/* <Footer /> */}
         </div>
     )
 }

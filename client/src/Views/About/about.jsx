@@ -15,7 +15,7 @@ export default function About() {
                     <a href="#" className="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
                 </p>
             </main>
-            <Footer/>
+            
         </div>
     )
 }
