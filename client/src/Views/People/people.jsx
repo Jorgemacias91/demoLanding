@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import gerenteImg1 from '../../Images/gerente1.jpg'
 import gerenteImg2 from '../../Images/gerente2.jpg'
 
-export default function People() {
+export default function People() { 
 
     return (
         <section className={style.containerPeople}>

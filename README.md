@@ -1,26 +1,25 @@
 
 # Demo Landing Page
 
+ Click Aquí para ver ==> <a href="http://104.236.67.205/"> Ver Demo</a>
 
 
-## Objetivos del Proyecto
 
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
+## Objetivos desempeñados en la Demo
+
+- Construcción de una App utilizando React, Redux, Node, Express, Postgres, Sequelize, JWS, bcrypt, Bootstrap.
+- Opción del usuario poder registrarse y una vez registrado, puede editar su perfil o eliminarlo si lo desea.
+- Autenticacion por Json Web Token
+- Las password estan encriptadas.
+-App deplegada en DigitalOceam tanto back como front.
+-Se hizo uso de axios para las peticiones en el front.
+-El formulario de registro cuenta con validaciones tanto por error o estructura del dato ingresado como duplicidad de usuario registrado.
 
 ## Horarios y Fechas
 
 El proyecto tendrá una duración máxima de dos semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
 
 ## Comenzando
-
- 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
- 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
-
-Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
 
 __IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
 
@@ -29,132 +28,92 @@ Actualmente las versiónes necesarias son:
  * __Node__: 12.18.3 o mayor
  * __NPM__: 6.14.16 o mayor
 
-Para verificar que versión tienen instalada:
 
-> node -v
->
-> npm -v
+## App
 
-## BoilerPlate
-
-El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
+La App cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
 
 En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
 
 ```
-DB_USER=usuariodepostgres
+DB_USER=postgres
 DB_PASSWORD=passwordDePostgres
 DB_HOST=localhost
 ```
 
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
+La base de datos tiene por nombre `landing`
 
-Adicionalmente será necesario que creen desde psql una base de datos llamada `countries`
-
-El contenido de `client` fue creado usando: Create React App.
-
-## Enunciado
-
-La idea general es crear una aplicación en la cual se pueda ver información de  distintos paises utilizando la api externa [restcountries](https://restcountries.eu/) y a partir de ella poder, entre otras cosas:
-
-  - Buscar paises
-  - Filtrarlos / Ordenarlos
-  - Crear actividades turísticas
-
-__IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO pueden utilizar los endpoints de la API externa que ya devuelven los resultados filtrados u ordenados sino que deben realizarlo ustedes mismos. En particular alguno de los ordenamientos o filtrados debe si o si realizarse desde el frontend.
-
-### Requerimientos mínimos:
-
-A continuación se detallaran los requerimientos mínimos para la aprobación del proyecto individial. Aquellos que deseen agregar más funcionalidades podrán hacerlo. En cuanto al diseño visual no va a haber wireframes ni prototipos prefijados sino que tendrán libertad de hacerlo a su gusto pero tienen que aplicar los conocimientos de estilos vistos en el curso para que quede agradable a la vista.
-
-__IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estilos a la aplicación. Tendrán que utilizar CSS con algunas de las opciones que vimos en dicha clase (CSS puro, CSS Modules o Styled Components)
 
 #### Tecnologías necesarias:
 - [ ] React
 - [ ] Redux
 - [ ] Express
 - [ ] Sequelize - Postgres
+- [ ] Json Web Token
+- [ ] Bootstrap
+- [ ] bcrypt
 
 #### Frontend
 
-Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
+Se  desarrolló una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
 
-__Pagina inicial__: deben armar una landing page con
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
 
-__Ruta principal__: debe contener
-- [ ] Input de búsqueda para encontrar países por nombre
-- [ ] Área donde se verá el listado de países. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta `GET /countries` y deberá mostrar su:
-  - Imagen de la bandera
-  - Nombre
-  - Continente
-- [ ] Botones/Opciones para filtrar por continente y por tipo de actividad turística
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población 
-- [ ] Paginado para ir buscando y mostrando los siguientes paises
+__Ruta principal__: Contine
+- [ ] Una imagen de cabezera
+- [ ] Menú de navegación
+- [ ] Botón de Login
 
-__Ruta de detalle de país__: debe contener
-- [ ] Los campos mostrados en la ruta principal para cada país (imagen de la bandera, nombre, código de país de 3 letras y continente)
-- [ ] Código de país de 3 letras (id)
-- [ ] Capital
-- [ ] Subregión
-- [ ] Área (Mostrarla en km2 o millones de km2)
-- [ ] Población
-- [ ] Actividades turísticas con toda su información asociada
+__Ruta de Registro__: Contiene formulario controlado con las siguientes validaciones
+- [ ]  El username no puede estar registrado dos veces
+- [ ] El email no puede estar registrado dos veces
+- [ ] El password debe contener minimo 8 caracter y contener un amayuscula
+- [ ] El password debe coincidir con el segundo intento
+- [ ] El email debe tener la siguientes estructura juanito@perez.com
+- [ ] Todos los datos deben llenarse o sino no puede segir con el registro
 
-__Ruta de creación de actividad turística__: debe contener
-- [ ] Un formulario __controlado__ con los siguientes campos
-  - Nombre
-  - Dificultad
-  - Duración
-  - Temporada
-- [ ] Posibilidad de seleccionar/agregar varios países
-- [ ] Botón/Opción para crear una nueva actividad turística
+__Ruta de login__: Contiene 
+- [ ] Un formulario con a solicitud de el username y el password con el que se registró. este se desabilita cuando el usuario se há registrado, habilitando el singUp
+
+__Ruta de about__: Esta ruta solo se habilita cuando el usuario está registrado y es donde puede ver su perfil 
+
+__Ruta de pricing__: solo texto
+
+__Ruta de contact__: solo texto
+
+__Ruta de features__: solo texto
+
 
 #### Base de datos
 
-El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
+El modelo de la base de datos contiene como entidad unica (Aquellas propiedades marcadas con asterísco son obligatorias):
 
-- [ ] País con las siguientes propiedades:
-  - ID (Código de 3 letras) *
+- [ ] Usuario:
+  - ID  *
+  - Username *
   - Nombre *
-  - Imagen de la bandera *
-  - Continente *
-  - Capital *
-  - Subregión
-  - Área
-  - Población
-- [ ] Actividad Turística con las siguientes propiedades:
-  - ID
-  - Nombre
-  - Dificultad (Entre 1 y 5)
-  - Duración
-  - Temporada (Verano, Otoño, Invierno o Primavera)
+  - Lastname *
+  - password*
+  - Email *
+  - Año de nacimiento *
 
-La relación entre ambas entidades debe ser de muchos a muchos ya que un país puede contener varias actividades turísticas y, a su vez, una actividad turística puede darse en múltiples países. Por ejemplo una actividad podría ser "Ski" que podría ocurrir en Argentina y también en Estados Unidos, pero a su vez Argentina podría también incluir "Rafting".
+
 
 #### Backend
 
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
-
-__IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
-
-- [ ] __GET /countries__:
-  - En una primera instancia deberán traer todos los países desde restcountries y guardarlos en su propia base de datos y luego ya utilizarlos desde allí (Debe almacenar solo los datos necesarios para la ruta principal)
-  - Obtener un listado de los primeros 10 países
-- [ ] __GET /countries/{idPais}__:
-  - Obtener el detalle de un país en particular
-  - Debe traer solo los datos pedidos en la ruta de detalle de país
-  - Incluir los datos de las actividades turísticas correspondientes
-- [ ] __GET /countries?name="..."__:
-  - Obtener los países que coincidan con el nombre pasado como query parameter (No necesariamente tiene que ser una matcheo exacto)
-  - Si no existe ningún país mostrar un mensaje adecuado
-- [ ] __POST /activity__:
-  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
-  - Crea una actividad turística en la base de datos
+Se desarrolló una api en Node/Express con las siguientes rutas:
 
 
-#### Testing
-- [ ] Al menos tener un componente del frontend con sus tests respectivos
-- [ ] Al menos tener una ruta del backend con sus tests respectivos
-- [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
+
+
+- [ ] __GET /user/{idUser}__:
+  - Obtiene el detalle de un usuario.
+- [ ] __POST /user__:
+  - Recibe los datos recolectados desde el formulario controlado de registro por body.
+  - Crea un usuario.
+- [ ] __POST /user/userdata/token__:
+  - Permite mantener activo el usuario logueado por medio del token usado como autenticación para ello se crea una funcion que verify la activación del token.
+- [ ] __PUT /user/{idUser}__:
+  - Recibe los datos recolectados desde el formulario controlado de registro por body de un usurio en particular y modifica los datos existentes.
+  - [ ] __DELETE /user/{idUser}__:
+  - Elimina un usurio en particular por medio de su ID.
+  
