@@ -256,18 +256,12 @@ export default function Register() {
                     {errors.birth && touched.birth && (
                         <p className={style.errorText}>{errors.birth}</p>
                     )}
-                    {/* <label>Photo</label>
-                <input 
-                name= "profilePic"
-                value = {input.profilePic}
-                //placeholder="ingresa tu nombre"
-                onChange={handleChange}
-                />               */}
+                  
 
                     <input
                         type="submit"
                         value="Register"
-                        className={style.btn}
+                        className={style.btnCor}
                     />
 
                 </form>

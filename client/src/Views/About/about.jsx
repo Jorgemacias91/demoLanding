@@ -1,22 +1,30 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import style from './about.module.css'
 import Navbar from '../../Components/Navbar/navbar'
 import Footer from '../../Components/Footer/footer'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import noProfPic from '../../Images/default.png'
 import {useHistory, Link} from 'react-router-dom'
 import Edit from '../../Images/editar.svg'
+// import getUser from '../../Actions/getUser'
 
 
 export default function About() {
 
     const userData = useSelector(state => state.userData)
     const history = useHistory();
+    const dispatch = useDispatch()
+
+  //  useEffect(() => {
+  //    dispatch(getUser())
+  //   }, []) 
     
 
     return (
+      <div>
+         <Navbar />
+      
         <div className={style.mainContainer}>
-        <Navbar renderTop={false} />
         <div className={style.secondContainer}>
           <div className={style.userDesc}>
   
@@ -37,7 +45,7 @@ export default function About() {
           </div>
           
         </div>
-  
+        </div>
       </div>
     )
 }

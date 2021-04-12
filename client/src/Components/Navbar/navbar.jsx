@@ -4,7 +4,7 @@ import style from './navbar.module.css'
 import {useSelector, useDispatch} from 'react-redux'
 import signOutUsers from '../../Actions/signOutUser'
 import {Redirect} from 'react-router-dom'
-import getUser from '../../Actions/getUser'
+
 
 export default function Navbar() {
 
@@ -12,11 +12,6 @@ const userData = useSelector(state => state.userData);
 const dispatch = useDispatch();
 const [redirect, setRedirect] = useState(false)
 
-useEffect(() => {
-  if(userData.id>0){
-  dispatch(getUser(userData.id))
-  }
-}, [])
 
 function handleClick() {
   dispatch(signOutUsers())

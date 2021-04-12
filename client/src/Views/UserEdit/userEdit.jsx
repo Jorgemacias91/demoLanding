@@ -122,6 +122,7 @@ export default function UserEdit() {
                             });
                         }
                         else{
+                            dispatch(signInUsers(input))
                             alert('Cuenta modificada')
                             setRedirect(true);
                         }
@@ -228,7 +229,7 @@ export default function UserEdit() {
                     <input
                         type="submit"
                         value="Edit"
-                        className={style.btn}
+                        className={style.btnCor}
                     />
 
                 </form>

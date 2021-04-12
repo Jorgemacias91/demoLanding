@@ -71,14 +71,31 @@ server.post('/', async (req, res) => {
 
     })
 
-server.get('/:idUser', (req, res) => {
-    const { idUser } = req.params;
+// server.get('/:idUser', (req, res) => {
+//     const { idUser } = req.params;
 
+//     try {
+
+//         User.findOne({
+//             where: { id: idUser }
+//         })
+//             .then(result => {
+//                 res.json(result)
+//             })
+
+//     } catch (error) {
+//         res.status(400).json({ message: `Error ${error}` })
+
+//     }
+
+// })
+
+server.get('/', (req, res) => {
+        
+    
     try {
 
-        User.findOne({
-            where: { id: idUser }
-        })
+        User.findAll()
             .then(result => {
                 res.json(result)
             })
