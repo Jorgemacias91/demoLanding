@@ -9,7 +9,7 @@ const initialState = {
         password: "",
         email: "",
         birth: ""
-    },
+    }
 
 
 }
@@ -22,7 +22,8 @@ function rootReducer(state = initialState, action) {
             if (action.payload.auth === true) {
                 return {
                     ...state,
-                    userData: action.payload.user
+                    userData: action.payload.user,
+                   
                 }
 
             } else {
@@ -34,7 +35,8 @@ function rootReducer(state = initialState, action) {
         case "SIGN_IN_REFRESH":
             return {
                 ...state,
-                userData: action.payload
+                userData: action.payload,
+              
             }
 
         case "SIGN_OUT":
@@ -51,22 +53,11 @@ function rootReducer(state = initialState, action) {
             }
         }
 
+        case "DELETE_USER":
+            return {
+                ...state
+            }
 
-        // case "GET_USER":
-        //     return {
-        //         ...state,
-        //         userData: action.payload
-        //     }
-
-        // case "DELETE_USER":
-        //     return {
-        //         ...state
-        //     }
-
-        // case "EDIT_USER":
-        //     return {
-        //         ...state
-        //     }
 
         default:
             return state

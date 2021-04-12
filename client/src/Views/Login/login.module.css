@@ -13,3 +13,7 @@
     border-radius: .5rem;
     font-size: 1.4rem;
 }
+
+.textError{
+    color:rgb(228, 35, 99);
+}

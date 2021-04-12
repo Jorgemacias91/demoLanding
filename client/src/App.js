@@ -1,20 +1,14 @@
 import React, {useEffect} from 'react'
 import style from './App.module.css';
-import {Route} from 'react-router-dom'
-import Home from './Views/Home/home'
-import Register from './Views/Register/register'
-import Feature from './Views/Features/features'
-import Contact from './Views/Contact/contact'
-import About from './Views/About/about'
-import Login from './Views/Login/login'
-import Pricing from './Views/Pricing/pricing'
 import axios from 'axios'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import signInUsers from './Actions/signInUsers'
-import EditUser from './Views/UserEdit/userEdit'
+import PublicRoutes from './Routes/publicRoutes'
+import PrivateRoutes  from './Routes/privateRoutes';
 
 
-function App() {
+
+function App(props) {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -30,27 +24,24 @@ function App() {
             },
           })
           .then(async (result) => {
-            await dispatch(signInUsers(result.data));
+            await dispatch(signInUsers(result.data))
           });
       }
     }
     request();
   }, []);
 
+  const username = useSelector(state => state.userData.username)
+
   return (
+
     <div className={style.App}>
-
-      <Route exact path="/" component={Home}/>
-      <Route path="/register" component={Register}/>
-      <Route path="/feature" component={Feature}/>
-      <Route path="/contact" component={Contact}/>
-      <Route path="/about" component={About}/>
-      <Route path="/login" component={Login}/>
-      <Route path="/pricing" component={Pricing}/>
-      <Route path="/editprofile" component={EditUser}/>
-
-    
-     
+{
+  username ?
+  <PrivateRoutes/>
+  :
+<PublicRoutes/>
+} 
       
     </div>
   );
