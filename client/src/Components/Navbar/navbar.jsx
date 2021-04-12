@@ -38,15 +38,15 @@ if (redirect) return <Redirect to="/login"></Redirect>
             <li><Link to="/pricing" className="nav-link" className={style.cor} >PRICING</Link></li>
             
             <li><Link to="/contact" className="nav-link" className={style.cor}>CONTACT</Link></li>
-            {userData.id>0 ?
+            {userData.username ?
           <li><Link to="/about" className="nav-link" className={style.cor}>ABOUT</Link></li>
           :
           <li></li>
           }
      </ul>
      <ul className="navbar-nav">
-          {userData.id > 0 ? 
-          <li><Link to="/login" onClick={handleClick} className="nav-link" className={style.cor}>SIGNUP</Link></li>
+          {userData.username ? 
+          <li><Link to="/" onClick={handleClick} className="nav-link" className={style.cor}>SIGNUP</Link></li>
           :
           <li><Link to="/login" className="nav-link" className={style.cor}>LOGIN</Link></li>
         }

@@ -11,9 +11,11 @@
 - Opción del usuario poder registrarse y una vez registrado, puede editar su perfil o eliminarlo si lo desea.
 - Autenticacion por Json Web Token
 - Las password estan encriptadas.
--App deplegada en DigitalOceam tanto back como front.
--Se hizo uso de axios para las peticiones en el front.
--El formulario de registro cuenta con validaciones tanto por error o estructura del dato ingresado como duplicidad de usuario registrado.
+- App deplegada en DigitalOceam tanto back como front.
+- Se hizo uso de axios para las peticiones en el front.
+- El formulario de registro cuenta con validaciones tanto por error o estructura del dato ingresado como duplicidad de usuario registrado.
+- Protección de las rutas en el front.
+
 
 ## Horarios y Fechas
 
@@ -106,14 +108,16 @@ Se desarrolló una api en Node/Express con las siguientes rutas:
 
 
 - [ ] __GET /user/{idUser}__:
-  - Obtiene el detalle de un usuario.
+  - Obtiene el detalle de un usuario, mas no fue necesario usarlo en el front.
 - [ ] __POST /user__:
   - Recibe los datos recolectados desde el formulario controlado de registro por body.
   - Crea un usuario.
 - [ ] __POST /user/userdata/token__:
   - Permite mantener activo el usuario logueado por medio del token usado como autenticación para ello se crea una funcion que verify la activación del token.
+- [ ] __POST /user/signIn__ : 
+  - Permite la validación del usuario al momemnto de loguearse.
 - [ ] __PUT /user/{idUser}__:
   - Recibe los datos recolectados desde el formulario controlado de registro por body de un usurio en particular y modifica los datos existentes.
-  - [ ] __DELETE /user/{idUser}__:
+- [ ] __DELETE /user/{idUser}__:
   - Elimina un usurio en particular por medio de su ID.
   

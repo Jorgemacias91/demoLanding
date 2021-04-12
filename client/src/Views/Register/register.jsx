@@ -125,7 +125,6 @@ export default function Register() {
                         await dispatch(signInUsers(res.data.user));
                         alert("Cuenta registrada");
                         localStorage.setItem("token", res.data.token);
-
                         setRedirect(true);
                     } else {
                         if (res.data.msgUsername) {

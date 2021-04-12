@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 const verifyToken = require("./verifyToken");
 
 
-
+// 1. Ruta usada para crear un nuevo usuario
 server.post('/', async (req, res) => {
     const { username, name, lastname, email, birth, password } = req.body
     
@@ -71,25 +71,7 @@ server.post('/', async (req, res) => {
 
     })
 
-// server.get('/:idUser', (req, res) => {
-//     const { idUser } = req.params;
-
-//     try {
-
-//         User.findOne({
-//             where: { id: idUser }
-//         })
-//             .then(result => {
-//                 res.json(result)
-//             })
-
-//     } catch (error) {
-//         res.status(400).json({ message: `Error ${error}` })
-
-//     }
-
-// })
-
+// 2. esta ruta no es usada en el front mas se ha creado para hacer pruebas y cumplir el CRUD
 server.get('/', (req, res) => {
         
     
@@ -107,6 +89,7 @@ server.get('/', (req, res) => {
 
 })
 
+// 3. Esta ruta permite modificar un usiario en particular
 server.put('/:idUser', (req, res) => {
     const { idUser } = req.params;
     const { username, name, lastname, email, birth } = req.body
@@ -136,6 +119,7 @@ server.put('/:idUser', (req, res) => {
 
 })
 
+// 4. Esta ruta permite eliminar el usuario registrado
 server.delete('/:idUser', (req, res) => {
     const { idUser } = req.params
     try {
@@ -150,6 +134,7 @@ server.delete('/:idUser', (req, res) => {
     }
 })
 
+// 5. Esta ruta permite la validación para el login
 server.post('/signin', (req,res) => {
     const {username, password} = req.body;
 
@@ -186,6 +171,7 @@ server.post('/signin', (req,res) => {
     })
 })
 
+// 6. Esta Ruta es creada para realizar la autenticación y permitir mantener los datos del usuario una vez logueado
 server.post("/userdata/token", verifyToken, (req, res, next) => {
 	User.findByPk(req.userId)
 		.then((user) => {
